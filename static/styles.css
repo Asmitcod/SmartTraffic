@@ -1,0 +1,400 @@
+/* Global styles */
+:root {
+    --primary-color: #3498db;
+    --danger-color: #ff1900;
+    --warning-color: #fff200;
+    --success-color: #3fe212;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --text-color: #34495e;
+    --bg-color: #f9f9f9;
+    --card-bg: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--card-bg);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+.danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.danger:hover:not(:disabled) {
+    background-color: #c0392b;
+}
+
+.warning {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.warning:hover:not(:disabled) {
+    background-color: #d35400;
+}
+
+/* Toggle Switch */
+.training-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--success-color);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--success-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Statistics Section */
+.simulation-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Intersection */
+.intersection {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto 20px;
+    background-color: #555;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.road {
+    position: absolute;
+    background-color: #333;
+}
+
+.road.vertical {
+    width: 80px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.road.horizontal {
+    width: 100%;
+    height: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Traffic Lights */
+.traffic-light {
+    position: absolute;
+    width: 20px;
+    height: 50px;
+    background-color: #222;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px 0;
+}
+
+.traffic-light.north {
+    bottom: 55%;
+    left: 45%;
+}
+
+.traffic-light.south {
+    top: 55%;
+    right: 45%;
+}
+
+.traffic-light.east {
+    top: 45%;
+    left: 55%;
+    transform: rotate(90deg);
+}
+
+.traffic-light.west {
+    bottom: 45%;
+    right: 55%;
+    transform: rotate(90deg);
+}
+
+.light {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+.light.active {
+    opacity: 1;
+}
+
+.light.red {
+    background-color: var(--danger-color);
+}
+
+.light.green {
+    background-color: var(--success-color);
+}
+
+/* Vehicle Queues */
+.queue-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.queue {
+    position: absolute;
+    display: flex;
+    gap: 5px;
+}
+
+.queue.north {
+    bottom: 60%;
+    left: 52%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.queue.south {
+    top: 60%;
+    right: 52%;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.queue.east {
+    top: 52%;
+    left: 60%;
+    flex-direction: row-reverse;
+}
+
+.queue.west {
+    bottom: 52%;
+    right: 60%;
+    flex-direction: row;
+}
+
+.car {
+    width: 20px;
+    height: 30px;
+    background-color: #ffcc00;
+    border-radius: 5px;
+    position: relative;
+}
+
+.queue.east .car, .queue.west .car {
+    width: 30px;
+    height: 20px;
+}
+
+/* Data Panels */
+.data-panels {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.panel {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 15px;
+}
+
+.panel h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: var(--dark-color);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.scrollable-content {
+    height: 200px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Action history items */
+.action-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.action-item:last-child {
+    border-bottom: none;
+}
+
+.episode-summary {
+    padding: 8px;
+    margin-bottom: 10px;
+    background-color: #f5f5f5;
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .data-panels {
+        grid-template-columns: 1fr;
+    }
+    
+    .intersection {
+        width: 100%;
+        height: 300px;
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .controls {
+        width: 100%;
+        margin-top: 15px;
+    }
+}

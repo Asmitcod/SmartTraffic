@@ -1,0 +1,8 @@
+setuptools
+wheel
+Flask
+Flask-SocketIO
+numpy
+eventlet
+python-socketio
+python-engineio

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Simulation</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Smart Traffic Management System</h1>
+            <div class="controls">
+                <button id="startBtn" class="btn primary">Start Simulation</button>
+                <button id="stopBtn" class="btn danger" disabled>Stop Simulation</button>
+                <button id="resetBtn" class="btn warning">Reset</button>
+                <div class="training-toggle">
+                    <label for="trainingToggle">Training Mode:</label>
+                    <label class="switch">
+                        <input type="checkbox" id="trainingToggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="simulation-stats">
+                <div class="stat-card">
+                    <h3>Current Episode</h3>
+                    <div class="stat-value" id="episodeValue">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Current Step</h3>
+                    <div class="stat-value" id="stepValue">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Waiting Time</h3>
+                    <div class="stat-value" id="waitingTimeValue">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Last Reward</h3>
+                    <div class="stat-value" id="rewardValue">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Epsilon (ε)</h3>
+                    <div class="stat-value" id="epsilonValue">1.0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Cars Passed</h3>
+                    <div class="stat-value" id="carsPassedValue">0</div>
+                </div>
+            </section>
+
+            <section class="intersection">
+                <div class="road vertical"></div>
+                <div class="road horizontal"></div>
+                
+                <div class="traffic-light north" id="lightNorth">
+                    <div class="light red active"></div>
+                    <div class="light green"></div>
+                </div>
+                <div class="traffic-light south" id="lightSouth">
+                    <div class="light red active"></div>
+                    <div class="light green"></div>
+                </div>
+                <div class="traffic-light east" id="lightEast">
+                    <div class="light red active"></div>
+                    <div class="light green"></div>
+                </div>
+                <div class="traffic-light west" id="lightWest">
+                    <div class="light red active"></div>
+                    <div class="light green"></div>
+                </div>
+                
+                <div class="queue-container">
+                    <div class="queue north" id="queueNorth"></div>
+                    <div class="queue south" id="queueSouth"></div>
+                    <div class="queue east" id="queueEast"></div>
+                    <div class="queue west" id="queueWest"></div>
+                </div>
+            </section>
+
+            <section class="data-panels">
+                <div class="panel">
+                    <h3>Action History</h3>
+                    <div class="scrollable-content" id="actionHistory"></div>
+                </div>
+                <div class="panel">
+                    <h3>Episode Summaries</h3>
+                    <div class="scrollable-content" id="episodeSummary"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
