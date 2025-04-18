@@ -220,8 +220,10 @@ simulation_running = False
  
 @app.after_request
 def set_permissions_policy(response):
-    response.headers['Permissions-Policy'] = 'interest-cohort=()'  # Disable the interest-cohort feature
+    # You can remove this line if not needed
+    response.headers['Permissions-Policy'] = 'interest-cohort=()'
     return response
+
 
 @app.route('/')
 def index():
