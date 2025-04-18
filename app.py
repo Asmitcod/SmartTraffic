@@ -217,6 +217,11 @@ else:
 # Global variables
 is_training = False
 simulation_running = False
+ 
+@app.after_request
+def set_permissions_policy(response):
+    response.headers['Permissions-Policy'] = 'interest-cohort=()'  # Disable the interest-cohort feature
+    return response
 
 @app.route('/')
 def index():
